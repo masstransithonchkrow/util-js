@@ -1,0 +1,39 @@
+/*This is meant to be rendered as a whole HTML page. JavaScript is embedded.*/
+
+/*Begin Site*/
+
+<!DOCTYPE html>
+<head>
+<title>Base Calculator</title>
+<meta charset="utf-8"/>
+<script type="text/javascript">
+/*This example originally showed up in 
+Introduction to JavaScript Programming with XML and PHP 1st edition
+ISBN 9780133068306*/
+function baseToString()
+{
+var num = parseInt(prompt("Enter a number. "));
+var numBase1 = parseInt(prompt("What number base should I use for the first answer? "));
+var numBase2 = parseInt(prompt("What number base should I use for the second answer? "));
+var numBaseA = num.toString(numBase1);
+var numBaseB = num.toString(numBase2);
+document.getElementById('number').innerHTML = num;
+document.getElementById('baseA').innerHTML = numBaseA;
+document.getElementById('baseB').innerHTML = numBaseB;
+document.getElementById('firstbase').innerHTML = numBase1;
+document.getElementById('secondbase').innerHTML = numBase2;
+}
+</script>
+</head>
+<body>
+<div id="content" style="width: 700px; margin-lefr: auto; margin-right: auto; float: center;">
+<h2>Turn a Decimal (Base10) number into a Base You Specify</h2>
+<p><input type="button" value="Calculate Bases" onclick="baseToString();" /></p>
+<h3>The number as entered is: <div id="number" style="color: blue;">&nbsp;</div></h3>
+<h3>The number in base <span id="firstbase" style="color:red;">&nbsp;</span> is:<div id="baseA" style="color: blue;">&nbsp;</div></h3>
+<h3>The number in base <span id="secondbase" style="color:red;">&nbsp;</span> is:<div id="baseB" style="color: blue;">&nbsp;</div></h3>
+</div>
+</body>
+</html>
+
+/*End Site*/
