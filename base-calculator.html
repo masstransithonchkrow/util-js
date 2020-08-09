@@ -1,11 +1,17 @@
-/*This is meant to be rendered as a whole HTML page. JavaScript is embedded.*/
-
-/*Begin Site*/
-
 <!DOCTYPE html>
 <head>
-<title>Base Calculator</title>
-<meta charset="utf-8"/>
+<title>365stops.ORG | Base Calculator</title>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="../365stops.ico"/>
+<link rel="canonical" href="https://365stops.org/campaign/base-calculator.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="og:title" content="MAT 145 Base Calculator" />
+<meta name="og:description" content="A base calculator that lets you compare two base calculations. A modified CIS 236 assignment." />
+<meta name="og:image:alt" content="a picture of my website logo set to Orbitron font with a bus stop icon on left and 'Quitting Google' on the right, with break in between words" />
+<meta name="og:type" content="blog" />
+<!-- This is used to change the site's appearance based on time of day. -->
+<script src="scripts/dawnAndDusk.js"></script>
+<noscript><link href="../365stops.css" rel="stylesheet"></noscript>
 <script type="text/javascript">
 /*This example originally showed up in 
 Introduction to JavaScript Programming with XML and PHP 1st edition
@@ -13,8 +19,14 @@ ISBN 9780133068306*/
 function baseToString()
 {
 var num = parseInt(prompt("Enter a number. "));
+if (num == NaN || num % num != 0)
+num = parseInt(prompt("Please enter a whole number."));
 var numBase1 = parseInt(prompt("What number base should I use for the first answer? "));
+if (numBase1 == NaN || numBase1 % numBase1 != 0)
+numBase1 = parseInt(prompt("Please use a whole number for the first base."));
 var numBase2 = parseInt(prompt("What number base should I use for the second answer? "));
+if (numBase2 == NaN || numBase2 % numBase2 != 0)
+numBase2 = parseInt(prompt("Please use a whole number for the second base."));
 var numBaseA = num.toString(numBase1);
 var numBaseB = num.toString(numBase2);
 document.getElementById('number').innerHTML = num;
@@ -23,17 +35,35 @@ document.getElementById('baseB').innerHTML = numBaseB;
 document.getElementById('firstbase').innerHTML = numBase1;
 document.getElementById('secondbase').innerHTML = numBase2;
 }
+function clearInputs()
+{
+document.getElementById('number').innerHTML = " ";
+document.getElementById('baseA').innerHTML = " ";
+document.getElementById('baseB').innerHTML = " ";
+document.getElementById('firstbase').innerHTML = " ";
+document.getElementById('secondbase').innerHTML = " ";
+}
 </script>
 </head>
 <body>
-<div id="content" style="width: 700px; margin-lefr: auto; margin-right: auto; float: center;">
-<h2>Turn a Decimal (Base10) number into a Base You Specify</h2>
-<p><input type="button" value="Calculate Bases" onclick="baseToString();" /></p>
-<h3>The number as entered is: <div id="number" style="color: blue;">&nbsp;</div></h3>
-<h3>The number in base <span id="firstbase" style="color:red;">&nbsp;</span> is:<div id="baseA" style="color: blue;">&nbsp;</div></h3>
-<h3>The number in base <span id="secondbase" style="color:red;">&nbsp;</span> is:<div id="baseB" style="color: blue;">&nbsp;</div></h3>
+<h1 class="splash">Turn a Decimal (Base10) number into a Base You Specify</h1>
+<br />
+<div class="center">
+    <a href="../hobbies.html" class="txtPanel" title="Projects" >Projects</a><br />
+  <a href="no-google.html" class="txtPanel"  title="how I limited my reliance on G*****">#DeleteG*****</a>
+  <a href="../dtp/deskthemepacks.html" class="txtPanel" title="customizations for Windows 8 and later">DeskThemePacks</a>
+  <a href="https://github.com/masstransithonchkrow/debthemepack" class="txtPanel" title="my attempt to emulate deskthemepacks on Debian Linux">#DebThemePack</a>
+  <a href="../campaign/podcasts.html"class="txtPanel" title="a collection of audio remarks by me">Podcasts</a>
+<a id="active"class="txtPanel" title="you're already viewing this page">Base Calculator</a>
+</div>
+<br />
+<div id="content" class="storyBorder">  
+<p><input type="button" class="emphasis" value="Calculate Bases" onclick="baseToString();" />&nbsp; <input type="button" class="emphasis" value="Clear Data" onclick="clearInputs();" /></p>
+<h3>The number as entered is: <div id="number" class="txtPanel" >&nbsp;</div></h3>
+<h3>The number in base <span id="firstbase" class="emphasis" >&nbsp;</span> is:</h3>
+<span class="paragraph"><div id="baseA" class="txtPanel">&nbsp;</div></span>
+<h3>The number in base <span id="secondbase" class="emphasis">&nbsp;</span> is:</h3>
+<span class="paragraph"><div id="baseB" class="txtPanel">&nbsp;</div></span>
 </div>
 </body>
 </html>
-
-/*End Site*/
